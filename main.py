@@ -91,7 +91,10 @@ try:
 
             # Log if still alive
             if time.time() - last_alive >= 180:
-                print(f"Still running - {datetime.now().strftime('%H:%M:%S')}")
+                seen_shifts = set()
+                print(
+                    f"Still running - {datetime.now().strftime('%H:%M:%S')}. Seen shifts cleared."
+                )
                 last_alive = time.time()
 
             # Wait then relaod
