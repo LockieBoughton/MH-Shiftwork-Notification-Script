@@ -10,20 +10,10 @@ Monitors the ShiftMatch roster for available shifts at Dandenong Hospital Emerge
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-### 2. Install just
+### 2. Install dependencies and Playwright browser
 
 ```bash
-# macOS
-brew install just
-
-# Linux
-curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to /usr/local/bin
-```
-
-### 3. Install dependencies and Playwright browser
-
-```bash
-just install
+make install
 ```
 
 This runs `uv sync` to install Python packages and `playwright install chromium` to download the browser.
@@ -31,14 +21,15 @@ This runs `uv sync` to install Python packages and `playwright install chromium`
 ## Running
 
 ```bash
-# Run with a visible browser window
-just run
+# Run headless (default, no window) with optional interval in seconds
+make run
+make run INTERVAL=10
 
-# Run headless (no window) with a custom check interval in seconds
-just run-headless 10
+# Run with a visible browser window
+make run-visible
 
 # Run with Playwright inspector for debugging
-just inspect
+make inspect
 ```
 
 ## Notifications
